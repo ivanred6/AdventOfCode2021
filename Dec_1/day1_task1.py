@@ -1,5 +1,5 @@
 import io
-tmp_compare = 0
+tmp_compare = -1
 depth_list = []
 increase = 0
 
@@ -14,3 +14,26 @@ for i in range(len(depth_list)):
 print(depth_list)
 
 
+# comparison attempt
+print("Begin comparisons checker")
+
+for x in depth_list:
+    if tmp_compare == 0:
+        # assume start of file
+        tmp_compare = x
+    else: 
+        # assume not at start of file
+        if x > tmp_compare:
+            # we've seen an increase
+            increase += 1
+            tmp_compare = x
+        else:
+            # a decrease or same
+            tmp_compare = x
+
+# End of comparisons
+print("End of Comparisons")
+
+print("The number of increases was: {}".format(increase))
+
+abc = input("Happy? ")
